@@ -16,9 +16,6 @@ RUN pnpm --filter api prisma:generate && pnpm --filter api build
 FROM node:24-alpine AS runtime
 
 ENV NODE_ENV=production
-ENV PNPM_HOME=/pnpm
-ENV PATH=$PNPM_HOME:$PATH
-RUN corepack enable && corepack prepare pnpm@11.25.0 --activate
 WORKDIR /app
 
 COPY --from=build /app/package.json /app/pnpm-lock.yaml /app/pnpm-workspace.yaml ./

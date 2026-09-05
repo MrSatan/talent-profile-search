@@ -57,7 +57,15 @@ services:
 
   migrate:
     <<: *api-service
-    command: ['pnpm', '--filter', 'api', 'prisma:migrate:deploy']
+    command:
+      [
+        'node',
+        'apps/api/node_modules/prisma/build/index.js',
+        'migrate',
+        'deploy',
+        '--schema',
+        'apps/api/prisma/schema.prisma',
+      ]
     depends_on:
       postgres:
         condition: service_healthy
