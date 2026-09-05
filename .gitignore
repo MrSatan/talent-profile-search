@@ -1,0 +1,14 @@
+node_modules/
+dist/
+coverage/
+.env
+.env.local
+playwright-report/
+test-results/
+*.tsbuildinfo
+data/raw/*
+!data/raw/.gitkeep
+data/reports/*
+!data/reports/.gitkeep
+300 user linkedin.txt
+agents.md

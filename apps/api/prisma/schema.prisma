@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Profile {
+  id                 String         @id @default(uuid()) @db.Uuid
+  linkedinUrl        String         @unique @map("linkedin_url")
+  linkedinId         String?        @map("linkedin_id")
+  fullName           String         @map("full_name")
+  jobTitle           String?        @map("job_title")
+  companyName        String?        @map("company_name")
+  industry           String?
+  location           String?
+  normalizedLocation String?        @map("normalized_location")
+  country            String?
+  summary            String?
+  yearsExperience    Float?         @map("years_experience")
+  experience         Json           @default("[]") @db.JsonB
+  education          Json           @default("[]") @db.JsonB
+  createdAt          DateTime       @default(now()) @map("created_at")
+  updatedAt          DateTime       @updatedAt @map("updated_at")
+  skills             ProfileSkill[]
+
+  @@index([id], map: "profiles_id_cursor_idx")
+  @@map("profiles")
+}
+
+model Skill {
+  id             String         @id @default(uuid()) @db.Uuid
+  name           String
+  normalizedName String         @unique @map("normalized_name")
+  profiles       ProfileSkill[]
+
+  @@map("skills")
+}
+
+model ProfileSkill {
+  profileId String  @db.Uuid @map("profile_id")
+  skillId   String  @db.Uuid @map("skill_id")
+  profile   Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  skill     Skill   @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@id([profileId, skillId])
+  @@index([skillId], map: "profile_skills_skill_id_idx")
+  @@map("profile_skills")
+}

@@ -1,0 +1,12 @@
+node_modules
+dist
+coverage
+playwright-report
+test-results
+*.tsbuildinfo
+data/raw
+pnpm-lock.yaml
+AGENTS.md
+README.md
+docs
+fullstack-docs.pdf
