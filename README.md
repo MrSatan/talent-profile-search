@@ -48,7 +48,7 @@ docker compose down --volumes
 
 ## Local development
 
-Install Node.js 24 and pnpm 9.14.2, then:
+Install Node.js 24 and pnpm 11.25.0, then:
 
 ```bash
 corepack enable
