@@ -155,7 +155,12 @@ describe('profile search integration', () => {
       industry: 'software',
     });
     expect(response.body.skills).toEqual(
-      expect.arrayContaining(['docker', 'elasticsearch', 'postgresql', 'typescript']),
+      expect.arrayContaining([
+        'docker',
+        'elasticsearch',
+        'postgresql',
+        'typescript',
+      ]),
     );
     expect(response.body.experience[0]).toHaveProperty('description');
     expect(response.body.education[0]).toHaveProperty('institution');

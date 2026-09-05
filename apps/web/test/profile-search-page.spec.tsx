@@ -2,10 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ProfileSearchPage } from '../src/features/search/profile-search-page';
-import type {
-  ProfileCard,
-  ProfileSearchResponse,
-} from '../src/api/contracts';
+import type { ProfileCard, ProfileSearchResponse } from '../src/api/contracts';
 
 const profile: ProfileCard = {
   id: '00000000-0000-4000-8000-000000000001',

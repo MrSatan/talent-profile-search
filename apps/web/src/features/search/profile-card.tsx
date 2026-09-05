@@ -14,7 +14,9 @@ export function ProfileCard({ profile }: { profile: ProfileCardContract }) {
   )}`;
   const matchedSkills = new Set(profile.matchedSkills);
   const hiddenSkillCount = Math.max(0, profile.skills.length - 12);
-  const visibleSkills = showAllSkills ? profile.skills : profile.skills.slice(0, 12);
+  const visibleSkills = showAllSkills
+    ? profile.skills
+    : profile.skills.slice(0, 12);
   const evidence = profile.matches.filter((match) => match.excerpt);
   const initials = profile.fullName
     .split(/\s+/u)
@@ -67,12 +69,17 @@ export function ProfileCard({ profile }: { profile: ProfileCardContract }) {
         {profile.matches.length > 0 ? (
           <p className="profile-card__match">
             <span>Matched in</span>{' '}
-            {profile.matches.map((match) => matchFieldLabel(match.field)).join(' · ')}
+            {profile.matches
+              .map((match) => matchFieldLabel(match.field))
+              .join(' · ')}
           </p>
         ) : null}
 
         {evidence.length > 0 ? (
-          <ul className="profile-card__evidence" aria-label="Why this result matched">
+          <ul
+            className="profile-card__evidence"
+            aria-label="Why this result matched"
+          >
             {evidence.map((match) => (
               <li key={match.field}>
                 <strong>{matchFieldLabel(match.field)}:</strong>{' '}

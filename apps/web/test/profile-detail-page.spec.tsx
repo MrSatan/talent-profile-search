@@ -65,13 +65,20 @@ describe('profile detail page', () => {
       </QueryClientProvider>,
     );
 
-    expect(await screen.findByRole('heading', { name: 'Nika Rahimi' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: 'Skills (4)' })).toBeInTheDocument();
-    expect(screen.getByText('Builds reliable search platforms.')).toBeInTheDocument();
-    expect(screen.getByText('Synthetic Technical University')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: '← Back to search' })).toHaveAttribute(
-      'href',
-      '/?q=python&page=2',
-    );
+    expect(
+      await screen.findByRole('heading', { name: 'Nika Rahimi' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Skills (4)' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('Builds reliable search platforms.'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('Synthetic Technical University'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: '← Back to search' }),
+    ).toHaveAttribute('href', '/?q=python&page=2');
   });
 });
