@@ -53,6 +53,7 @@ Install Node.js 24 and pnpm 9.14.2, then:
 ```bash
 corepack enable
 pnpm install --frozen-lockfile
+pnpm --filter api prisma:generate
 ```
 
 Copy `.env.example` to `.env`. Start only the backing services and bootstrap the canonical/search data:

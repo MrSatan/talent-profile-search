@@ -175,6 +175,7 @@ The raw file may be included only in the private ZIP returned to the employer be
 ```text
 Checkout
   -> pnpm install --frozen-lockfile
+  -> Prisma client generation
   -> formatting check
   -> lint
   -> typecheck
